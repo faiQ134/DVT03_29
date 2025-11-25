@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australia Speeding Fines Choropleth Map</title>
+    <link rel="stylesheet" href="./css/map-visualisation.css">
+</head>
+<body>
+    <h1>Australia Speeding Fines and Arrests Choropleth Map</h1>
+    <p>This map shows speeding fines and arrests by jurisdiction. Darker shades indicate higher fines. NSW typically has the highest counts. Click a state for percentage details.</p>
+    
+    <div id="filters">
+        <label for="year-select">Filter by Year:</label>
+        <input id="year-slider" type="range" min="2008" max="2024" value="all">
+        <span id="year-label">All Years</span>
+    </div>
+   
+    <div id="map-container">
+        <svg id="map"></svg>
+        <div id="info-panel">
+            <h3>State Details</h3>
+            <p id="info-content">Click a state to view percentage of fines.</p>
+        </div>
+    </div>
+    
+    <div id="tooltip" class="tooltip"></div>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    
+    <script src="./map/load-data.js"></script>
+    <script src="./map/map.js"></script>
+    <script src="./map/interactions.js"></script>
+    
+</body>
+</html>

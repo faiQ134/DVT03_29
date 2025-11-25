@@ -1,0 +1,162 @@
+
+:root {
+  --bg: linear-gradient(180deg, #e6eeff 0%, #efe6ff 100%);
+  --card-bg: rgba(3, 37, 75, 0.9); /* dark blue with purple hue */
+  --accent: #6b4bff;
+  --muted: #9aa7bf;
+  --text: #eaf0ff;
+}
+
+body {
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif; 
+    margin: 20px;
+    background: var(--bg); 
+    color: #07204a; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    text-align: center;
+    color: #062040; 
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Filters */
+#filters {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+#filter-label {
+    font-size: 1.5rem;
+    font-weight: 700;   
+    color: var(--text);
+    padding: 20px;
+}
+
+#year-select {
+    padding: 20px;
+}
+
+#year-label {
+     font-size: 1.5rem;
+    margin-left: 15px;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    background: var(--card-bg); 
+    color: var(--text); 
+    box-shadow: 0 6px 20px rgba(60, 30, 100, 0.4);
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#year-slider {
+    width: 60%;
+    padding: 14px 20px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    background: var(--card-bg); 
+    color: var(--text); 
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Map Container */
+#map-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#map {
+    border: 1px solid rgba(3, 37, 75, 0.12); 
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.state {
+    stroke: #fff;
+    stroke-width: 1px;
+    transition: fill 0.3s;
+}
+
+.state:hover {
+    fill-opacity: 0.8;
+}
+
+.state.selected {
+    stroke: var(--accent); 
+    stroke-width: 2px;
+}
+
+/* Info Panel */
+#info-panel {
+    margin-left: 20px;
+    padding: 30px;
+    background: var(--card-bg); 
+    color: var(--text); 
+    border: 1px solid rgba(75, 42, 128, 0.5);
+    border-radius: 16px;
+    width: 350px;
+    min-height: 180px;
+    box-shadow: 0 8px 20px rgba(60, 30, 100, 0.4);
+}
+
+#info-panel h3 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#info-panel .stateName {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#info-panel .stateValue {
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 15px;
+}
+ 
+#info-panel p {
+    font-size: 1.25rem;     
+    line-height: 1.6;
+}
+
+#info-content {
+    transition: opacity 0.4s ease-in-out;
+    opacity: 1;
+}
+
+#info-content.fade-out {
+    opacity: 0;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background-color: var(--card-bg); 
+    color: var(--text); 
+    padding: 8px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 10px rgba(60, 30, 100, 0.3);
+}
