@@ -42,11 +42,13 @@ p {
 }
 
 #year-select {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: none;
     padding: 20px;
 }
 
 #year-label {
-     font-size: 1.5rem;
     margin-left: 15px;
     padding: 10px 15px;
     font-size: 1.2rem;
