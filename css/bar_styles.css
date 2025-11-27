@@ -1,0 +1,188 @@
+:root{
+  --bg: linear-gradient(180deg,#e6eeff 0%,#efe6ff 100%);
+  --card-bg: rgba(3,37,75,0.9);
+  --accent: #6b4bff;
+  --muted: #9aa7bf;
+  --text: #eaf0ff;
+}
+
+*{box-sizing:border-box;font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif}
+html, body { height: 100%; }
+#chartContainer {
+    height: auto;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#07204a;
+  padding:18px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* header & controls */
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:center; /* Center the title */
+  gap:1rem;
+  margin-bottom:20px;
+  width:100%;
+}
+.toolbar h1{
+  margin:0;
+  font-size:2.5rem; /* Bigger font size */
+  color:#062040;
+  font-weight:700;
+  text-align:center;
+  text-shadow: 0 2px 4px rgba(6,32,74,0.1);
+}
+.controls{
+  position:absolute;
+  right:20px;
+  top:20px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.controls label{font-size:1rem;color:#333}
+select#jurisdictionSelect{
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid rgba(3,37,75,0.12);
+  font-size:0.95rem;
+  min-width:220px;
+  background:rgba(255,255,255,0.9);
+}
+button#resetBtn{
+  padding:8px 12px;
+  border-radius:8px;
+  border: none;
+  background:var(--card-bg);
+  color:var(--text);
+  cursor:pointer;
+  font-weight:900;
+}
+button#resetBtn:hover{opacity:0.95}
+
+/* chart area */
+.chart-area{
+  background: transparent;
+  padding:0;
+  border-radius:0;
+  box-shadow: none;
+}
+#chartContainer{
+  position:relative;
+  padding:0;
+  background:transparent;
+}
+#chartSvg{
+  width:100%;
+  height:520px;
+  display:block;
+  background:transparent; 
+  border-radius:0;
+}
+
+/* tooltip */
+.tooltip{
+  position: absolute;
+  pointer-events: none;
+  background: rgba(3,37,75,0.95);
+  color: var(--text);
+  padding:10px 12px;
+  border-radius:8px;
+  font-size:0.9rem;
+  line-height:1.25;
+  box-shadow: 0 8px 20px rgba(3,37,75,0.35);
+  transform: translate(-50%,-120%);
+  white-space:nowrap;
+  display:none;
+  z-index: 30;
+}
+
+/* axis styling */
+.axis text {
+  font-size: 11px;
+  fill: #07204a;
+}
+
+.axis path,
+.axis line {
+  stroke: #9aa7bf;
+  stroke-width: 1;
+}
+
+/* bar labels */
+.bar-label {
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* small screens */
+@media (max-width:720px){
+  #chartSvg{height:420px}
+  select#jurisdictionSelect{min-width:150px}
+  .toolbar{flex-direction:column;align-items:center;gap:8px}
+  .toolbar h1{font-size:2rem;}
+  .controls{
+    position:relative;
+    right:auto;
+    top:auto;
+    justify-content:center;
+    margin-top:10px;
+  }
+  
+  /* Adjust legend for mobile */
+  .legend text {
+    font-size: 9px;
+  }
+}
+.chart-view {
+  transition: opacity 0.4s ease;
+}
+
+.jurisdiction-btn, .back-button, #jurisdictionSelect, #resetBtn {
+  transition: all 0.3s ease !important;
+}
+
+.bar {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.bar-label {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.jurisdiction-btn.active {
+  transform: scale(1.05);
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.jurisdiction-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #e8ecf7;
+    color: #07204a;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-weight: 800;
+}
+
+.jurisdiction-btn.active {
+    background: #07204a;
+    color: white;
+}
+
+.jurisdiction-btn:hover {
+    background: #b8c3dd;
+}
