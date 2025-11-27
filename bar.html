@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speeding Fines — Age Groups</title>
+
+  <link rel="stylesheet" href="./css/bar_styles.css" />
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="toolbar">
+      <h1>Speeding Fines Per Age Group</h1>
+
+      <div class="controls">
+        <button id="resetBtn" class="reset-btn">Reset View</button>
+      </div>
+    </header>
+    <section class="button-bar">
+      <div id="jurisdictionButtons" class="button-container">
+      </div>
+    </section>
+    <section class="chart-area">
+      <div id="chartContainer">
+        <svg id="chartSvg"
+             aria-label="Bar chart showing fines by age group and jurisdiction"></svg>
+      </div>
+
+      <div id="legend"></div>
+    </section>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+
+  </main>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="age_group/load-data.js"></script>
+  <script src="age_group/bar-chart.js"></script>
+  <script src="age_group/interactions.js"></script>
+</body>
+</html>
