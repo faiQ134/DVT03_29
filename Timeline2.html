@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speeding Fines Timeline</title>
+  <link rel="stylesheet" href="./css/timeline-style.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+</head>
+
+<body>
+    <!-- Header will be injected here automatically -->
+  <main class="page">
+    <header class="toolbar">
+      <h1>Speeding Fines Timeline Analysis (2008-2024)</h1>
+      
+    </header>
+
+    <section class="timeline-controls">
+      <div id="yearSelector" class="year-selector"></div>
+    </section>
+
+    <!-- Main content with side-by-side layout -->
+    <div class="main-content">
+      <!-- Chart area (left) -->
+      <section class="chart-area">
+        <div id="timelineChart" class="timeline-container"></div>
+      </section>
+
+      <!-- Statistics panel (right) -->
+      <aside class="stats-panel">
+        <h3>2008-2024 Overview</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">Total Fines</span>
+            <span class="stat-value" id="totalFinesStat">59.7M</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Average per Year</span>
+            <span class="stat-value" id="avgFinesStat">3.51M</span>
+          </div>
+          <div class="stat-item highlight">
+            <span class="stat-label">Peak Year</span>
+            <span class="stat-value" id="peakYearStat">2021 (4.87M)</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Overall Growth</span>
+            <span class="stat-value" id="growthStat">+25.9%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Years Analyzed</span>
+            <span class="stat-value" id="yearsStat">17</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Year details panel -->
+    <section class="details-panel">
+      <div id="yearDetails" class="year-details"></div>
+    </section>
+
+    <!-- Tooltip -->
+    <div id="timelineTooltip" class="tooltip" style="display: none;"></div>
+     <!-- Footer will be injected here automatically -->
+  </main>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="./js/timeline-graphs2.js"></script>
+     
+  <!-- Load the layout system -->
+  <script src="./js/loadLayout.js"></script>
+</body>
+</html>

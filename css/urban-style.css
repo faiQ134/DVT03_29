@@ -1,0 +1,425 @@
+:root {
+  --bg: #000;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --accent: #6b4bff;
+  --muted: #9aa7bf;
+  --text: #ffffff;
+  --text-secondary: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #1e3cfa 0%, #3a5bff 25%, #67c1ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #6a5cff, #c46bff);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Main layout */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Header */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.toolbar h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: left;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.control-btn {
+  padding: 12px 24px;
+  border: none;
+  background: var(--gradient-secondary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 92, 255, 0.4);
+}
+
+.control-btn.active {
+  background: var(--gradient-primary);
+  box-shadow: 0 5px 15px rgba(103, 193, 255, 0.4);
+}
+
+/* Main content area */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* Chart area */
+.chart-area {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(103, 193, 255, 0.2);
+  min-height: 500px;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+#chart {
+  width: 100%;
+  height: 500px;
+}
+
+/* Statistics panel */
+.stats-panel {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(103, 193, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.stats-panel h3 {
+  color: #67c1ff;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  border-bottom: 2px solid rgba(103, 193, 255, 0.3);
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(103, 193, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(103, 193, 255, 0.1);
+  border-color: rgba(103, 193, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  color: #e6f7ff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.stat-value {
+  color: #67c1ff;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+}
+
+.stat-item.highlight {
+  background: rgba(103, 193, 255, 0.1);
+  border-color: #67c1ff;
+}
+
+.stat-item.highlight .stat-value {
+  color: #4ecdc4;
+  font-size: 18px;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #67c1ff;
+  pointer-events: none;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.tooltip strong {
+  color: #67c1ff;
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.tooltip div {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+/* Chart elements */
+.bar-camera {
+  fill: #67c1ff;
+  transition: all 0.3s ease;
+}
+
+.bar-police {
+  fill: #c46bff;
+  transition: all 0.3s ease;
+}
+
+.bar-urban {
+  fill: url(#urbanGradient);
+  transition: all 0.3s ease;
+}
+
+.bar:hover {
+  opacity: 0.8;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* Axes and grid */
+.axis text {
+  font-size: 12px;
+  fill: #9aa7bf;
+  font-weight: 500;
+}
+
+.axis path,
+.axis line {
+  stroke: rgba(103, 193, 255, 0.3);
+}
+
+.grid line {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+/* Labels */
+.urban-label, .percentage-label {
+  font-weight: 600;
+  font-size: 11px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Legend */
+.legend {
+  font-size: 12px;
+  fill: #9aa7bf;
+}
+
+.legend-item {
+  cursor: pointer;
+}
+
+/* Gradient definitions */
+svg defs linearGradient stop {
+  transition: stop-color 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 968px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .stats-panel {
+    order: -1;
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .toolbar h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  .controls {
+    justify-content: center;
+  }
+  
+  .chart-area {
+    padding: 20px;
+    min-height: 400px;
+  }
+  
+  #chart {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 10px;
+  }
+  
+  .toolbar h1 {
+    font-size: 1.5rem;
+  }
+  
+  .control-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+  
+  .stats-panel {
+    padding: 15px;
+  }
+  
+  .stat-item {
+    padding: 8px;
+  }
+  
+  .stat-label {
+    font-size: 12px;
+  }
+  
+  .stat-value {
+    font-size: 14px;
+  }
+  
+  .chart-area {
+    padding: 15px;
+    min-height: 350px;
+  }
+  
+  #chart {
+    height: 350px;
+  }
+}
+
+/* Animation for bars */
+@keyframes barEnter {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.bar {
+  animation: barEnter 0.6s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(103, 193, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(103, 193, 255, 0.5);
+}
+/* Force bars to be visible */
+.bar-urban {
+    fill: #67c1ff !important;
+    stroke: none !important;
+}
+
+/* Override any problematic CSS */
+#chart svg rect.bar {
+    fill: #67c1ff !important;
+    stroke: none !important;
+}
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #67c1ff;
+    pointer-events: none;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    font-family: 'Segoe UI', sans-serif;
+    opacity: 0;
+    transition: opacity 0.3s;
+    /* Ensure tooltip stays within chart area */
+    max-width: 250px;
+    word-wrap: break-word;
+}
+
+.tooltip strong {
+    color: #67c1ff;
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.tooltip div {
+    margin-bottom: 4px;
+    font-size: 13px;
+    line-height: 1.4;
+}

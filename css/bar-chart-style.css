@@ -1,0 +1,554 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+    color: #e6e6e6;
+    background: radial-gradient(circle at top left, #0a0f24, #000000 60%);
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    padding: 35px;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #b0b0b0;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.controls {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.form-select {
+    padding: 10px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    color: #ffffff;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.form-select option {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.visualization-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+    align-items: start;
+}
+
+.chart-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Fix for SVG container */
+#pieChart {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pieChart svg {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.legend-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legend-container h3 {
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 1.2em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.legend-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.legend-text {
+    font-size: 0.9em;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+.legend-method {
+    font-weight: 600;
+    display: block;
+}
+
+.legend-details {
+    font-size: 0.8em;
+    color: #b0b0b0;
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #b0b0b0;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+/* Pie chart specific styles */
+.percentage-label {
+    font-weight: 700;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.8),
+        -1px -1px 2px rgba(0, 0, 0, 0.8),
+        1px -1px 2px rgba(0, 0, 0, 0.8),
+        -1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-size: 12px;
+    fill: #ffffff;
+}
+
+.method-label {
+    font-weight: 600;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.8),
+        -1px -1px 2px rgba(0, 0, 0, 0.8),
+        1px -1px 2px rgba(0, 0, 0, 0.8),
+        -1px 1px 2px rgba(0, 0, 0, 0.8);
+    font-size: 10px;
+    fill: #ffffff;
+}
+
+.connector-line {
+    stroke: rgba(255, 255, 255, 0.6);
+    stroke-width: 1.5;
+    stroke-dasharray: 3, 2;
+    opacity: 0.7;
+}
+
+.arc path {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 2;
+}
+
+.arc path:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+/* Scrollbar styling */
+.legend::-webkit-scrollbar {
+    width: 6px;
+}
+
+.legend::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.legend::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.legend::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .visualization-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .form-select {
+        min-width: 100%;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .chart-section {
+        min-height: 400px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .subtitle {
+        font-size: 1em;
+    }
+    
+    .chart-section {
+        min-height: 350px;
+        padding: 15px;
+    }
+}
+
+/* Add these to your existing CSS */
+.percentage-label {
+    font-weight: 700;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        -2px -2px 4px rgba(0, 0, 0, 0.8),
+        2px -2px 4px rgba(0, 0, 0, 0.8),
+        -2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    fill: #ffffff;
+    pointer-events: none;
+}
+
+.method-label {
+    font-weight: 600;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        -2px -2px 4px rgba(0, 0, 0, 0.8),
+        2px -2px 4px rgba(0, 0, 0, 0.8),
+        -2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 11px;
+    fill: #ffffff;
+    pointer-events: none;
+}
+
+.connector-line {
+    stroke: rgba(255, 255, 255, 0.6);
+    stroke-width: 1;
+    pointer-events: none;
+}
+
+/* Ensure chart container centers properly */
+.chart-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#pieChart {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pieChart svg {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Update these styles in your CSS */
+.chart-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 700px; /* Increased height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#pieChart {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pieChart svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.percentage-label {
+    font-weight: 700;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        -2px -2px 4px rgba(0, 0, 0, 0.8),
+        2px -2px 4px rgba(0, 0, 0, 0.8),
+        -2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 16px; /* Larger */
+    fill: #ffffff;
+    pointer-events: none;
+}
+
+.method-label {
+    font-weight: 600;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        -2px -2px 4px rgba(0, 0, 0, 0.8),
+        2px -2px 4px rgba(0, 0, 0, 0.8),
+        -2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 13px; /* Larger */
+    fill: #ffffff;
+    pointer-events: none;
+}
+
+.connector-line {
+    stroke: rgba(255, 255, 255, 0.6);
+    stroke-width: 2; /* Thicker */
+    pointer-events: none;
+}
+
+.arc path {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 3; /* Thicker borders */
+}
+
+.arc path:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+/* Add to your CSS file */
+.pie-tooltip {
+    background: rgba(0, 0, 0, 0.9) !important;
+    color: white !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    pointer-events: none !important;
+    z-index: 1000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    max-width: 250px !important;
+}
+
+.pie-tooltip strong {
+    color: #3498db !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+    font-size: 15px !important;
+}
+
+.pie-tooltip div {
+    margin-bottom: 3px !important;
+    line-height: 1.4 !important;
+}
+
+.percentage-label {
+    font-weight: 700;
+    
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* Remove the old label styles */
+.method-label,
+.connector-line {
+    display: none;
+}
+
+/* Add to your CSS file */
+.pie-tooltip {
+    background: rgba(0, 0, 0, 0.9) !important;
+    color: white !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    pointer-events: none !important;
+    z-index: 1000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    max-width: 250px !important;
+}
+
+.pie-tooltip strong {
+    color: #3498db !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+    font-size: 15px !important;
+}
+
+.pie-tooltip div {
+    margin-bottom: 3px !important;
+    line-height: 1.4 !important;
+}
+
+/* Clean percentage labels only */
+.percentage-label {
+    font-weight: 700;
+    font-size: 14px;
+    pointer-events: none;
+    font-family: Arial, sans-serif;
+    fill: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}

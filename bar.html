@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Speeding Fines — Age Groups</title>
 
-  <link rel="stylesheet" href="./css/bar_styles.css" />
+  <link rel="stylesheet" href="./css/bar_styles2.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
 </head>
 
 <body>
+  <!-- Header will be injected here automatically -->
+  
   <main class="page">
 
-    <header class="toolbar">
-      <h1>Speeding Fines Per Age Group</h1>
+   
+      <h1 style="text-align: center; margin: 20px 0;">Speeding Fines Per Age Group</h1>
 
       <div class="controls">
         <button id="resetBtn" class="reset-btn">Reset View</button>
@@ -36,9 +39,21 @@
 
   </main>
 
+  <!-- Footer will be injected here automatically -->
+  
+ </div>
+   
+    
+
+
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="age_group/load-data.js"></script>
   <script src="age_group/bar-chart.js"></script>
   <script src="age_group/interactions.js"></script>
+    
+  <!-- Load the layout system -->
+  <script src="./js/loadLayout.js"></script>
+  
+  
 </body>
 </html>

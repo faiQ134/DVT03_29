@@ -11,19 +11,16 @@ function createHeader() {
                         <a href="index.html" class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="Timeline2.html" class="nav-link">Timeline</a>
+                        <a href="timeline.html" class="nav-link">Timeline</a>
                     </li>
                     <li class="nav-item">
-                        <a href="urban.html" class="nav-link">Camera Enforcement Analysis</a>
+                        <a href="urban.html" class="nav-link">Urban Analysis</a>
                     </li>
                     <li class="nav-item">
-                        <a href="pie-chart.html" class="nav-link">Enforcement</a>
+                        <a href="enforcement.html" class="nav-link">Enforcement</a>
                     </li>
                     <li class="nav-item">
-                        <a href="map.html" class="nav-link">Jurisdictions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="bar.html" class="nav-link">Speeding</a>
+                        <a href="jurisdiction.html" class="nav-link">Jurisdictions</a>
                     </li>
                 </ul>
                 <div class="nav-toggle">

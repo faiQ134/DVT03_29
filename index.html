@@ -5,17 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Speeding Data Story</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
 </head>
 <body>
+    <!-- Header will be injected here automatically -->
+
     <header class="hero">
         <div class="hero-content">
-            <h3>By TDM 21</h3>
-            <h1>Speeding<br>Data Story</h1>
+            <h3>By DV 29</h3>
+            <h1>Speeding<br>Data Story...</h1>
             <p>Explore the speeding data story from AU GOV</p>
-            <button class="start-btn">START</button>
+            <button class="start-btn" onclick="navigateToDashboard()">START EXPLORING</button>
+            
+            <!-- Quick navigation buttons -->
+            <div class="quick-nav">
+                <button class="nav-btn" onclick="navigateToTimeline()">📊 Timeline</button>
+                <button class="nav-btn" onclick="navigateToUrban()">🏙️ Camera Analysis</button>
+                <button class="nav-btn" onclick="navigateToEnforcement()">👮 Enforcement</button>
+                <button class="nav-btn" onclick="navigateToJurisdiction()">🗺️ Jurisdictions</button>
+                <button class="nav-btn" onclick="navigateToSpeeding()">🚗 Speeding</button>
+            </div>
         </div>
         <div class="hero-image">
-            <img src="./images/index.jpg" alt="Police monitoring road" />
+            <img src="./images/image-1.jpg" alt="Police monitoring road" />
         </div>
     </header>
 
@@ -23,30 +35,74 @@
         <h2>Explore the data story on speeding based on the Australian Enforcement Government</h2>
         <div class="cards">
             <div class="card">
-                <h3>DATA SOURCE?</h3>
-                <p></p>
+                <h3>DATA SOURCE</h3>
+                <p>
+                    <a href="https://app.powerbi.com/view?r=eyJrIjoiZTAxY2EyOTAtYTdhMS00NTRiLWI0NDktM2U1ZDI0NzY0ZTU5IiwidCI6ImFhMjFiNjQwLWJhYzItNDU2ZC04NTA1LWYyY2MwN2Y1MTc4NCJ9" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Australian Government Department of Transportation
+                    </a>
+                </p>
             </div>
             <div class="card">
                 <h3>PURPOSE OF VISUALISATION?</h3>
-                <p></p>
+                <p>For easy understanding of data and trends</p>
             </div>
             <div class="card">
-                <h3>DATA DESIGN?</h3>
-                <p></p>
+                <h3>DATA DESIGN</h3>
+                <p>Based on the studies throughout the whole semester</p>
             </div>
         </div>
     </section>
 
-    <section class="visualisation">
-        <div class="visual-img"></div>
-        <div class="visual-text">
-            <h1>Data Visualisation</h1>
-            <p>
-                Nur Liyana Binti Mohd Rossle<br>
-                104385073<br>
-                (Dataset) from GovData<br>
-            </p>
+     <section class="visualisation">
+    <div class="visual-img">
+        <div style="width: 100%; height: 100%; background: #1a1a1a; padding: 15px; border-radius: 10px; display: flex; align-items: flex-end; gap: 8px;">
+            <div style="flex: 1; background: #67c1ff; height: 80%; border-radius: 4px 4px 0 0;"></div>
+            <div style="flex: 1; background: #c46bff; height: 60%; border-radius: 4px 4px 0 0;"></div>
+            <div style="flex: 1; background: #6a5cff; height: 90%; border-radius: 4px 4px 0 0;"></div>
+            <div style="flex: 1; background: #67c1ff; height: 40%; border-radius: 4px 4px 0 0;"></div>
+            <div style="flex: 1; background: #c46bff; height: 70%; border-radius: 4px 4px 0 0;"></div>
         </div>
-    </section>
+    </div>
+    <div class="visual-text">
+        <h1>Data Visualisation</h1>
+        <p>
+            Nur Liyana Binti Mohd Rossle<br>
+            104385073<br>
+            Prudence Juma COREDO<br>
+            104396729<br>
+            Muhammad FAIQ<br>
+            104397939<br>
+        </p>
+    </div>
+</section>
+    <!-- Footer will be injected here automatically -->
+
+    <!-- Load the layout system -->
+    <script src="./js/loadLayout.js"></script>
+    
+    <!-- Navigation script -->
+    <script>
+        // Test if navigation is working
+        console.log('Navigation test - functions available:');
+        console.log('navigateToDashboard:', typeof navigateToDashboard);
+        console.log('navigateToTimeline:', typeof navigateToTimeline);
+        console.log('navigateToUrban:', typeof navigateToUrban);
+        console.log('navigateToEnforcement:', typeof navigateToEnforcement);
+        console.log('navigateToJurisdiction:', typeof navigateToJurisdiction);
+        console.log('navigateToSpeeding:', typeof navigateToSpeeding);
+        
+        // Make external links open in new window
+        document.addEventListener('DOMContentLoaded', function() {
+            const externalLinks = document.querySelectorAll('a[href^="http"]');
+            externalLinks.forEach(link => {
+                if (!link.getAttribute('target')) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

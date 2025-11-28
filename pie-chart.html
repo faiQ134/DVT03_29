@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Enforcement Detection Methods</title>
+    <link rel="stylesheet" href="css/bar-chart-style.css">
+      <link rel="stylesheet" href="./css/layout.css" />
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Traffic Enforcement Detection Methods</h1>
+            <p class="subtitle">Distribution of fines, arrests, and charges by detection method</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="dataType">Data Type:</label>
+                <select id="dataType" class="form-select">
+                    <option value="fines">Fines</option>
+                    <option value="arrests">Arrests</option>
+                    <option value="charges">Charges</option>
+                </select>
+            </div>
+            
+            
+        </div>
+
+        <div class="visualization-container">
+            <div class="chart-section">
+                <div id="pieChart" class="chart-wrapper"></div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="legend-container">
+                    <h3>Detection Methods</h3>
+                    <div id="legend" class="legend"></div>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-label">Total</div>
+                        <div class="stat-value" id="totalValue">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Largest Segment</div>
+                        <div class="stat-value" id="largestSegment">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pie-chart.js"></script>
+      <!-- Load the layout system -->
+  <script src="./js/loadLayout.js"></script>
+
+</body>
+</html>

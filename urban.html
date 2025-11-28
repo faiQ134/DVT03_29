@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Enforcement Distribution by Camera</title>
+    <link rel="stylesheet" href="./css/urban-style.css">
+      <link rel="stylesheet" href="./css/layout.css" />
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+      <!-- Header will be injected here automatically -->
+  
+    <div class="page">
+        <div class="toolbar">
+            <h1>Fines Camera distribution by Jurisdiction</h1>
+            <div class="controls">
+               
+              
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="chart-area">
+                <div id="chart"></div>
+                <div id="tooltip" class="tooltip"></div>
+            </div>
+            
+            <div class="stats-panel">
+                <h3>Enforcement Statistics</h3>
+                <div class="stats-grid" id="statsGrid">
+                    <!-- Stats will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./js/urban.js"></script>
+     <!-- Load the layout system -->
+  <script src="./js/loadLayout.js"></script>
+</body>
+</html>

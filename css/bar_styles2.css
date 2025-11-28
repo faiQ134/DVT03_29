@@ -1,0 +1,500 @@
+:root{
+  --bg: #000;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --accent: #6b4bff;
+  --muted: #9aa7bf;
+  --text: #ffffff;
+  --text-secondary: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #1e3cfa 0%, #3a5bff 25%, #67c1ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #6a5cff, #c46bff);
+}
+
+*{box-sizing:border-box;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+html, body { height: 100%; }
+#chartContainer {
+    height: auto;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  padding:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.6;
+}
+
+/* Header Section */
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 60px;
+  background: var(--gradient-primary);
+  min-height: 30vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(103, 193, 255, 0.2) 0%, transparent 50%);
+}
+
+.header-content {
+  max-width: 600px;
+  z-index: 1;
+  position: relative;
+}
+
+.header-content h1{
+  margin:0;
+  font-size:3rem;
+  line-height:1.1;
+  margin-bottom:1rem;
+  font-weight:700;
+  color: #ffffff;
+  text-shadow: none;
+  
+      padding: 20px 0;
+      
+     
+}
+
+.header-content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+
+.header-image {
+  z-index: 1;
+  position: relative;
+}
+
+.header-image img {
+  width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.header-image img:hover {
+  transform: scale(1.02);
+}
+
+/* Controls & Toolbar */
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+  margin:40px 0;
+  width:100%;
+  position: relative;
+}
+
+.toolbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #67c1ff, transparent);
+}
+
+.toolbar h1 {
+  margin:0;
+  font-size:2.5rem;
+  color:#ffffff;
+  font-weight:700;
+  text-align:center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.controls{
+  position:absolute;
+  right:60px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.controls label{
+  font-size:1rem;
+  color:#ffffff;
+  font-weight:600;
+}
+
+select#jurisdictionSelect{
+  padding:12px 16px;
+  border-radius:12px;
+  border:none;
+  font-size:1rem;
+  min-width:240px;
+  background:var(--card-bg);
+  color:#ffffff;
+  box-shadow: 0 6px 20px rgba(103, 193, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(103, 193, 255, 0.2);
+}
+
+select#jurisdictionSelect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(103, 193, 255, 0.4);
+  border-color: rgba(103, 193, 255, 0.4);
+}
+
+button#resetBtn{
+  padding:12px 24px;
+  border-radius:12px;
+  border: none;
+  background: var(--gradient-secondary);
+  color:#ffffff;
+  cursor:pointer;
+  font-weight:700;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(106, 92, 255, 0.3);
+}
+
+button#resetBtn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(106, 92, 255, 0.5);
+  opacity:1;
+}
+
+/* Chart area */
+.chart-area{
+  background: #111;
+  padding:40px 20px;
+  border-radius:0;
+  box-shadow: none;
+  position: relative;
+}
+
+.chart-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #67c1ff, transparent);
+}
+
+#chartContainer{
+  position:relative;
+  padding:0;
+  background:transparent;
+}
+#chartSvg{
+  width:100%;
+  height:520px;
+  display:block;
+  background:transparent; 
+  border-radius:0;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.jurisdiction-btn {
+    padding: 12px 24px;
+    border: none;
+    background: rgba(103, 193, 255, 0.15);
+    color: #ffffff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border: 2px solid rgba(103, 193, 255, 0.3);
+}
+
+.jurisdiction-btn.active {
+    background: var(--gradient-secondary);
+    color: #ffffff;
+    border-color: transparent;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(106, 92, 255, 0.4);
+}
+
+.jurisdiction-btn:hover {
+    background: rgba(103, 193, 255, 0.3);
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+/* tooltip */
+.tooltip{
+  position: absolute;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding:14px 18px;
+  border-radius:12px;
+  font-size:0.95rem;
+  line-height:1.4;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transform: translate(-50%,-120%);
+  white-space:nowrap;
+  display:none;
+  z-index: 30;
+  border: 1px solid rgba(103, 193, 255, 0.3);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #67c1ff, #c46bff);
+  border-radius: 12px 12px 0 0;
+}
+
+/* axis styling */
+.axis text {
+  font-size: 12px;
+  fill: #ffffff;
+  font-weight: 500;
+}
+
+.axis path,
+.axis line {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 1;
+}
+
+.axis .domain {
+  stroke: rgba(255, 255, 255, 0.6);
+}
+
+/* bar labels */
+.bar-label {
+  font-weight: 700;
+  pointer-events: none;
+  fill: #ffffff;
+  font-size: 11px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Bars - Gradient styling */
+.bar {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  rx: 4px;
+  ry: 4px;
+}
+
+.bar.positive {
+  fill: url(#barGradient);
+}
+
+.bar.negative {
+  fill: url(#negativeBarGradient);
+}
+
+/* Chart title and labels */
+.chart-title {
+  fill: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.axis-label {
+  fill: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Legend styling */
+.legend text {
+  fill: #ffffff;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.legend rect {
+  rx: 4px;
+  ry: 4px;
+}
+
+.legend-title {
+  fill: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* small screens */
+@media (max-width:968px){
+  .header {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .header-content {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .header-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .header-image img {
+    width: 100%;
+    max-width: 220px;
+  }
+  
+  .toolbar{
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    margin:30px 0;
+  }
+  
+  .toolbar h1 {
+    font-size: 2rem;
+  }
+  
+  .controls{
+    position:relative;
+    right:auto;
+    top:auto;
+    transform:none;
+    justify-content:center;
+    margin-top:10px;
+  }
+  
+  #chartSvg{height:450px}
+  select#jurisdictionSelect{min-width:200px}
+  
+  .button-container {
+    gap: 8px;
+  }
+  
+  .jurisdiction-btn {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width:480px){
+  .header-content h1{font-size:2rem;}
+  .header-content p{font-size:1rem;}
+  
+  .toolbar h1 {
+    font-size: 1.8rem;
+  }
+  
+  #chartSvg{height:380px}
+  select#jurisdictionSelect{min-width:180px; font-size:0.9rem;}
+  
+  .button-container {
+    gap: 6px;
+  }
+  
+  .jurisdiction-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .legend text {
+    font-size: 9px;
+  }
+  
+  .axis text {
+    font-size: 10px;
+  }
+}
+
+/* Animation for chart loading */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-area {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Grid lines for better readability */
+.grid line {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+/* Force all text to white for visibility */
+body, 
+h1, h2, h3, h4, h5, h6,
+p, span, a, label,
+button, select, option,
+.tooltip, .axis text, .legend text, .bar-label {
+    color: #ffffff !important;
+    fill: #ffffff !important; /* for SVG text */
+}
+
+/* Fix for h1 centering */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  width: 100%;
+  position: relative;
+}
+
+.toolbar h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+}
+
+.controls {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

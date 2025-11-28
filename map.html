@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Australia Speeding Fines Choropleth Map</title>
-    <link rel="stylesheet" href="./css/map-visualisation.css">
+    <link rel="stylesheet" href="./css/map-visualisation2.css">
+    <link rel="stylesheet" href="./css/layout.css" />
+
 </head>
 <body>
-    <h1>Australia Speeding Fines and Arrests</h1>
-    <p>This map shows speeding fines and arrests by jurisdiction. Darker shades indicate higher fines. NSW typically has the highest counts. Click a state for percentage details.</p>
-    
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 30px 20px;">
+    <h1 style="margin-bottom: 15px;">Australia Speeding Fines and Arrests</h1>
+    <p style="max-width: 600px; line-height: 1.6;">This map shows speeding fines and arrests by jurisdiction. Darker shades indicate higher fines. NSW typically has the highest counts. Click a state for percentage details.</p>
+</div>    
     <div id="filters">
         <label for="year-select">Filter by Year:</label>
         <input id="year-slider" type="range" min="2008" max="2024" value="all">
@@ -32,6 +35,9 @@
     <script src="./map/load-data.js"></script>
     <script src="./map/map.js"></script>
     <script src="./map/interactions.js"></script>
+          <!-- Load the layout system -->
+  <script src="./js/loadLayout.js"></script>
+
     
 </body>
 </html>

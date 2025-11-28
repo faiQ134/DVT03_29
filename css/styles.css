@@ -6,15 +6,17 @@ body {
     line-height: 1.6;
 }
 
+/* HERO SECTION */
 .hero {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;           /* CENTER CONTENT */
     align-items: center;
     padding: 60px 40px;
     background: linear-gradient(135deg, #1e3cfa 0%, #3a5bff 25%, #67c1ff 100%);
     min-height: 70vh;
     position: relative;
     overflow: hidden;
+    gap: 60px;                          /* BRING TEXT + IMG CLOSER */
 }
 
 .hero::before {
@@ -28,13 +30,13 @@ body {
 }
 
 .hero-content {
-    max-width: 500px;
+    max-width: 550px;                   /* SLIGHTLY LARGER */
     z-index: 1;
     position: relative;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 3.8rem;                  /* MORE PRESENCE */
     line-height: 1.1;
     margin-bottom: 1.5rem;
     font-weight: 700;
@@ -45,7 +47,7 @@ body {
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     opacity: 0.9;
     margin-bottom: 2rem;
 }
@@ -70,14 +72,16 @@ body {
     background: #111;
 }
 
+/* HERO IMAGE FIXED + MADE LARGER */
 .hero-image {
     z-index: 1;
     position: relative;
 }
 
 .hero-image img {
-    width: 400px;
-    border-radius: 20px;
+    width: 520px;                       /* BIGGER IMAGE */
+    max-width: 40vw;                    /* RESPONSIVE */
+    border-radius: 22px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
@@ -86,6 +90,7 @@ body {
     transform: scale(1.02);
 }
 
+/* INTRO */
 .intro {
     text-align: center;
     padding: 80px 20px;
@@ -104,7 +109,7 @@ body {
 }
 
 .intro h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
     background: linear-gradient(90deg, #67c1ff, #6a5cff);
     -webkit-background-clip: text;
@@ -113,23 +118,24 @@ body {
 }
 
 .intro > p {
-    font-size: 1.1rem;
-    max-width: 600px;
+    font-size: 1.2rem;
+    max-width: 650px;
     margin: 0 auto 2rem;
     opacity: 0.8;
 }
 
+/* CARDS */
 .cards {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 35px;
     margin-top: 40px;
     flex-wrap: wrap;
 }
 
 .card {
-    width: 280px;
-    padding: 30px 25px;
+    width: 290px;
+    padding: 32px 26px;
     border-radius: 20px;
     background: linear-gradient(135deg, #6a5cff, #c46bff);
     color: #fff;
@@ -154,18 +160,7 @@ body {
     box-shadow: 0 15px 40px rgba(106, 92, 255, 0.4);
 }
 
-.card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.card p {
-    font-size: 1rem;
-    opacity: 0.9;
-    line-height: 1.5;
-}
-
+/* VISUALISATION SECTION */
 .visualisation {
     display: flex;
     align-items: center;
@@ -173,6 +168,7 @@ body {
     padding: 100px 20px;
     background-color: #000;
     position: relative;
+    gap: 60px;                           /* FIX LARGE EMPTY SPACE */
 }
 
 .visualisation::before {
@@ -186,11 +182,10 @@ body {
 }
 
 .visual-img {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     background: linear-gradient(135deg, #67c1ff, #3a5bff);
     border-radius: 30px;
-    margin-right: 60px;
     box-shadow: 0 20px 40px rgba(103, 193, 255, 0.2);
     position: relative;
     overflow: hidden;
@@ -207,13 +202,8 @@ body {
     animation: pulse 4s infinite linear;
 }
 
-@keyframes pulse {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 .visual-text {
-    max-width: 500px;
+    max-width: 480px;
 }
 
 .visual-text h1 {
@@ -232,44 +222,32 @@ body {
     line-height: 1.6;
 }
 
-/* Responsive design */
+/* RESPONSIVE */
 @media (max-width: 968px) {
     .hero {
         flex-direction: column;
         text-align: center;
         padding: 40px 20px;
+        gap: 40px;
     }
-    
-    .hero-content {
-        max-width: 100%;
-        margin-bottom: 40px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
+
     .hero-image img {
-        width: 100%;
-        max-width: 350px;
+        max-width: 80%;
+        width: 380px; /* More visible */
     }
-    
+
     .visualisation {
         flex-direction: column;
+        gap: 40px;
         text-align: center;
     }
-    
+
     .visual-img {
-        margin-right: 0;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
-    
-    .cards {
-        gap: 20px;
-    }
-    
+
     .card {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
     }
 }
